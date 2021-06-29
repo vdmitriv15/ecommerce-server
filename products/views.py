@@ -20,37 +20,37 @@ def products(request):
                 'name': 'black hood',
                 'price': 40.80,
                 'description': '........................................',
-                'image': '/static/vendor/img/products/Adidas-hoodie.png'
+                'image': 'vendor/img/products/Adidas-hoodie.png'
             },
             {
                 'name': 'blue jacket',
                 'price': 230.47,
                 'description': '........................................',
-                'image': '/static/vendor/img/products/Blue-jacket-The-North-Face.png'
+                'image': 'vendor/img/products/Blue-jacket-The-North-Face.png'
             },
             {
                 'name': 'brown cardigan',
                 'price': 32.98,
                 'description': '........................................',
-                'image': '/static/vendor/img/products/Brown-sports-oversized-top-ASOS-DESIGN.png'
+                'image': 'vendor/img/products/Brown-sports-oversized-top-ASOS-DESIGN.png'
             },
             {
                 'name': 'black backpack',
                 'price': 20.70,
                 'description': '........................................',
-                'image': '/static/vendor/img/products/Black-Nike-Heritage-backpack.png'
+                'image': 'vendor/img/products/Black-Nike-Heritage-backpack.png'
             },
             {
                 'name': 'black shoes',
                 'price': 123.97,
                 'description': '........................................',
-                'image': '/static/vendor/img/products/Black-Dr-Martens-shoes.png'
+                'image': 'vendor/img/products/Black-Dr-Martens-shoes.png'
             },
             {
                 'name': 'sweatpants',
                 'price': 31.52,
                 'description': '........................................',
-                'image': '/static/vendor/img/products/Dark-blue-wide-leg-ASOs-DESIGN-trousers.png'
+                'image': 'vendor/img/products/Dark-blue-wide-leg-ASOs-DESIGN-trousers.png'
             },
         ]
     }
