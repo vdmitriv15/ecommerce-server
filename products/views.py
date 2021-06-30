@@ -1,6 +1,8 @@
 from django.shortcuts import render
+import os
+import json
 
-# Create your views here.
+MODULE_DIR = os.path.dirname(__file__)
 
 
 def index(request):
@@ -15,43 +17,8 @@ def products(request):
     context = {
         'title': 'GeekShop - Catalog',
         'header': 'GeekShop',
-        'products': [
-            {
-                'name': 'black hood',
-                'price': 40.80,
-                'description': '........................................',
-                'image': 'vendor/img/products/Adidas-hoodie.png'
-            },
-            {
-                'name': 'blue jacket',
-                'price': 230.47,
-                'description': '........................................',
-                'image': 'vendor/img/products/Blue-jacket-The-North-Face.png'
-            },
-            {
-                'name': 'brown cardigan',
-                'price': 32.98,
-                'description': '........................................',
-                'image': 'vendor/img/products/Brown-sports-oversized-top-ASOS-DESIGN.png'
-            },
-            {
-                'name': 'black backpack',
-                'price': 20.70,
-                'description': '........................................',
-                'image': 'vendor/img/products/Black-Nike-Heritage-backpack.png'
-            },
-            {
-                'name': 'black shoes',
-                'price': 123.97,
-                'description': '........................................',
-                'image': 'vendor/img/products/Black-Dr-Martens-shoes.png'
-            },
-            {
-                'name': 'sweatpants',
-                'price': 31.52,
-                'description': '........................................',
-                'image': 'vendor/img/products/Dark-blue-wide-leg-ASOs-DESIGN-trousers.png'
-            },
-        ]
     }
+    file_path = os.path.join(MODULE_DIR, 'fixtures/goods.json')
+    file = open(file_path, encoding='utf-8')
+    context['products'] = json.load(file)
     return render(request, 'products/products.html', context)
