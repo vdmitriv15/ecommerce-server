@@ -14,3 +14,10 @@ def cart_add(request, product_id):
         cart.quantity += 1
         cart.save()
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+
+def cart_remove(request, id):
+    cart = Cart.objects.get(id=id)
+    cart.delete()
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+

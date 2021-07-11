@@ -16,7 +16,7 @@
                         </div>
                         <div class="col-lg-4">$ {{ cart.product.price }}</div>
                             <div class="col-lg-4">
-                                <a href="#">
+                                <a href="{% url 'carts:cart_remove' cart.id %}">
                                     <i class="fas fa-trash"></i>
                                 </a>
                             </div>
