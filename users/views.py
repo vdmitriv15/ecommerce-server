@@ -2,6 +2,7 @@ from django.shortcuts import render, HttpResponseRedirect
 from django.contrib import auth, messages
 from django.urls import reverse
 from users.forms import UserLoginForm, UserRegistrationForm, UserProfileForm
+from carts.models import Cart
 
 
 def login(request):
@@ -55,6 +56,7 @@ def profile(request):
         form = UserProfileForm(instance=request.user)
     context = {
         'title': 'GeekShop - Profile',
-        'form': form
+        'form': form,
+        'carts': Cart.objects.all(),
     }
     return render(request, 'users/profile.html', context)
