@@ -57,6 +57,6 @@ def profile(request):
     context = {
         'title': 'GeekShop - Profile',
         'form': form,
-        'carts': Cart.objects.all(),
+        'carts': Cart.objects.filter(user=request.user),
     }
     return render(request, 'users/profile.html', context)
