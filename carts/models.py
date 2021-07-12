@@ -14,3 +14,7 @@ class Cart(models.Model):
 
     def amount(self):
         return self.quantity * self.product.price
+
+    def total_quantity(self):
+        carts = Cart.objects.filter(user=self.user)
+        return sum(cart.quantity for cart in carts)
