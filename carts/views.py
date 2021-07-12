@@ -1,8 +1,10 @@
 from django.shortcuts import render, HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
 from products.models import Product
 from carts.models import Cart
 
 
+@login_required
 def cart_add(request, product_id):
     product = Product.objects.get(id=product_id)
     carts = Cart.objects.filter(user=request.user, product=product)
@@ -16,6 +18,7 @@ def cart_add(request, product_id):
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
+@login_required
 def cart_remove(request, id):
     cart = Cart.objects.get(id=id)
     cart.delete()
