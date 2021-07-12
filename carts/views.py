@@ -1,5 +1,7 @@
 from django.shortcuts import render, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
+from django.template.loader import render_to_string
+from django.http import JsonResponse
 from products.models import Product
 from carts.models import Cart
 
@@ -24,3 +26,17 @@ def cart_remove(request, id):
     cart.delete()
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
+
+@login_required
+def cart_edit(request, id, quantity):
+    if request.is_ajax():
+        cart = Cart.objects.get(id=id)
+        if quantity > 0:
+            cart.quantity = quantity
+            cart.save()
+        else:
+            cart.delete()
+        carts = Cart.objects.filter(user=request.user)
+        context = {'carts': carts}
+        result = render_to_string('carts/cart.html', context)
+        return JsonResponse({'result': result})
