@@ -52,4 +52,7 @@ def admin_users_update(request, pk):
 
 
 def admin_users_remove(request, pk):
-    return render(request, 'admins/admin-users-update-delete.html')
+    selected_user = User.objects.get(id=pk)
+    selected_user.is_active = False
+    selected_user.save()
+    return HttpResponseRedirect(reverse('admins:admin_users'))
